@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Grand Finale 💫</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(25,25,112,0.7), rgba(255,215,0,0.7)),
+                  url('mhi amour.webp') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 40px 20px; overflow-y: auto;
+      opacity: 0; transition: opacity 1s ease;
+    }
+    body.fade-in { opacity: 1; }
+
+    nav { position: fixed; top: 0; left: 0; width: 100%; background: rgba(25,25,112,0.9); display: flex; justify-content: center; padding: 15px 20px; z-index: 1000; }
+    nav a { color: #fff; margin: 0 15px; font-weight: 600; text-decoration: none; }
+    nav a:hover { color: #ffd700; transform: scale(1.1); }
+    body { padding-top: 120px; } /* extra space for slider */
+
+    h1 { font-family: 'Playfair Display', serif; font-size: 3em; text-shadow: 0 0 20px #ffd700; animation: glow 3s infinite alternate; margin-bottom: 30px; }
+    @keyframes glow { from { text-shadow: 0 0 10px #ffd700; } to { text-shadow: 0 0 40px #ffd700; } }
+
+    .line { font-size: 1.5em; margin: 20px 0; opacity: 0; animation: fadeIn 2s forwards; }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    .btn { padding: 15px 40px; margin: 20px; font-size: 1.2em; border-radius: 50px; background: linear-gradient(135deg, #ffd700, #ff6b6b); color: #fff; border: none; cursor: pointer; }
+    .btn:hover { transform: translateY(-3px) scale(1.05); background: linear-gradient(135deg, #ff6b6b, #ffd700); }
+
+    .particle { position: absolute; width: 3px; height: 3px; background: #fff; border-radius: 50%; animation: drift 10s linear infinite; }
+    @keyframes drift { from { transform: translateY(100vh); opacity: 1; } to { transform: translateY(-10vh); opacity: 0; } }
+
+    .volume-control { margin-top: 10px; background: rgba(25,25,112,0.6); padding: 5px 15px; border-radius: 20px; }
+    .volume-control label { margin-right: 10px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="love.html">Love</a>
+    <a href="page3.html">Finale</a>
+  </nav>
+
+  <!-- Volume slider at the top -->
+  <div class="volume-control">
+    <label for="volumeControl">🎵 Volume:</label>
+    <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.5">
+  </div>
+
+  <h1>Shewa, you are my forever 💖</h1>
+
+  <!-- Long heartfelt finale message -->
+  <div class="line" style="animation-delay: 0s;">My dearest Shewa, from the very first moment our paths crossed, my heart knew it had found its home.</div>
+  <div class="line" style="animation-delay: 2s;">You are the melody in my silence, the light in my darkest nights, and the gentle strength that carries me through every storm.</div>
+  <div class="line" style="animation-delay: 4s;">Every smile you share feels like sunrise, painting my world with colors I never knew existed.</div>
+  <div class="line" style="animation-delay: 6s;">Every word you speak lingers like poetry, reminding me that love is not just a feeling, but a living, breathing miracle.</div>
+  <div class="line" style="animation-delay: 8s;">Even though I mess up sometimes, and stumble more often than I should, you still choose to stay with me — and that is the greatest gift of all.</div>
+  <div class="line" style="animation-delay: 10s;">I want you to know that my love for you is endless — it stretches beyond time, beyond distance, beyond every obstacle life could place before us.</div>
+  <div class="line" style="animation-delay: 12s;">Tonight, under the stars, I whisper this promise: I will cherish you, honor you, and love you for all the days of my life.</div>
+  <div class="line" style="animation-delay: 14s;">You are my dream, my destiny, my everything. 💖</div>
+  <div class="line" style="animation-delay: 16s;">With you, I have learned that love is not about perfection, but about choosing each other every single day.</div>
+  <div class="line" style="animation-delay: 18s;">You are my safe place, my greatest adventure, and the reason I believe in forever.</div>
+  <div class="line" style="animation-delay: 20s;">No matter where life takes us, my heart will always find its way back to you.</div>
+  <div class="line" style="animation-delay: 22s;">Thank you for being my miracle, my partner, and my eternal love. 🌹</div>
+  <div class="line" style="animation-delay: 24s;">Even in my flaws and mistakes, you see the best in me — and that makes me want to be better every day.</div>
+  <div class="line" style="animation-delay: 26s;">I promise to hold your hand through every season, to laugh with you in joy, and to comfort you in sorrow.</div>
+  <div class="line" style="animation-delay: 28s;">My love for you is the story I want to write for the rest of my life. 💫</div>
+  <div class="line" style="animation-delay: 30s;">Forever yours, Dave 💖</div>
+
+  <button class="btn" onclick="replayMagic()">Replay the magic 🔄</button>
+
+  <!-- Background music -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="edd.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Volume control
+    const music = document.getElementById('bgMusic');
+    const slider = document.getElementById('volumeControl');
+    slider.addEventListener('input', () => {
+      music.volume = slider.value;
+    });
+
+    // Particle effect
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 10000);
+    }
+    setInterval(createParticle, 200);
+
+    // Replay magic
+    function replayMagic() {
+      document.body.classList.remove("fade-in");
+      setTimeout(() => { window.location.href = "index.html"; }, 800);
+    }
+
+    // Fade-in effect
+    document.addEventListener("DOMContentLoaded", () => { document.body.classList.add("fade-in"); });
+
+    // Navigation fade
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const href = link.getAttribute("href");
+        document.body.classList.remove("fade-in");
+        setTimeout(() => window.location.href = href, 800);
+      });
+    });
+  </script>
+</body>
+</html>
